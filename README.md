@@ -1,6 +1,6 @@
-This is a [Julia](https://julialang.org/) script to turn Silva databases in FASTA format into a format suitable for use in the assignTaxonomy function of [dada2](https://benjjneb.github.io/dada2/). The script truncates the taxonomies to a user-specified maximum number of levels, 
+This is a [Julia](https://julialang.org/) script to turn Silva databases in FASTA format into a format suitable for use in the `assignTaxonomy` function of [dada2](https://benjjneb.github.io/dada2/). The script truncates the taxonomies to a user-specified maximum number of levels, replaces spaces in taxon names with underscores, adds a trailing semicolon to the taxon string, and removes the sequence ID. The `U`s in the Silva sequence are replaced with `T`s.
 
-#Usage
+## Usage
 
 First of all you will need to download and unzip the desired Silva database from the [Silva FTP site](http://ftp.arb-silva.de/). An example:
 
