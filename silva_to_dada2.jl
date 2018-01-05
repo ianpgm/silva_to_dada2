@@ -3,8 +3,18 @@ function limit_taxon_depth(ID_line::String,levels::Int)
     if length(split(taxa,';')) < levels
         levels = length(split(taxa,';'))
     end
-    limited_taxa = join(split(taxa,';')[1:levels],';')*";"
-    return limited_taxa
+    limited_taxa = split(taxa,';')[1:levels]
+    for taxon in reverse(limited_taxa)
+        if startswith(taxon,"uncultured")
+            pop!(limited_taxa)
+        else
+            break
+        end
+    end
+    if length(limited_taxa) >= 6 && limited_taxa[6] == "Escherichia-Shigella"
+        limited_taxa[6] = "Escherichia/Shigella"
+    end
+    return join(limited_taxa,";")*";"
 end
 
 function process_line(line::String,levels::Int)
